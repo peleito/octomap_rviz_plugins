@@ -216,7 +216,7 @@ void OccupancyGridDisplay::subscribe()
       sub_.reset(new message_filters::Subscriber<octomap_msgs::Octomap>());
 
       sub_->subscribe(threaded_nh_, topicStr, queue_size_);
-      sub_->registerCallback(boost::bind(&OccupancyGridDisplay::incomingMessageCallback, this, boost::placeholders::_1));
+      sub_->registerCallback(boost::bind(&OccupancyGridDisplay::incomingMessageCallback, this, _1));
 
     }
   }
@@ -616,7 +616,7 @@ void TemplatedOccupancyGridDisplay<OcTreeType>::incomingMessageCallback(const oc
 
 } // namespace octomap_rviz_plugin
 
-#include <pluginlib/class_list_macros.hpp>
+#include <pluginlib/class_list_macros.h>
 
 typedef octomap_rviz_plugin::TemplatedOccupancyGridDisplay<octomap::OcTree> OcTreeGridDisplay;
 typedef octomap_rviz_plugin::TemplatedOccupancyGridDisplay<octomap::ColorOcTree> ColorOcTreeGridDisplay;

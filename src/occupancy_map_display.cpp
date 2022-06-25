@@ -106,7 +106,7 @@ void OccupancyMapDisplay::subscribe()
       sub_.reset(new message_filters::Subscriber<octomap_msgs::Octomap>());
 
       sub_->subscribe(threaded_nh_, topicStr, 5);
-      sub_->registerCallback(boost::bind(&OccupancyMapDisplay::handleOctomapBinaryMessage, this, boost::placeholders::_1));
+      sub_->registerCallback(boost::bind(&OccupancyMapDisplay::handleOctomapBinaryMessage, this, _1));
 
     }
   }
@@ -218,7 +218,7 @@ void TemplatedOccupancyMapDisplay<OcTreeType>::handleOctomapBinaryMessage(const 
 
 } // namespace rviz
 
-#include <pluginlib/class_list_macros.hpp>
+#include <pluginlib/class_list_macros.h>
 typedef octomap_rviz_plugin::TemplatedOccupancyMapDisplay<octomap::OcTree> OcTreeMapDisplay;
 typedef octomap_rviz_plugin::TemplatedOccupancyMapDisplay<octomap::OcTreeStamped> OcTreeStampedMapDisplay;
 
